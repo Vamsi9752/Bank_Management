@@ -1,0 +1,116 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ page import="com.Bank.DAO.*"%>
+<%@ page import="com.Bank.DTO.*"%>
+<!DOCTYPE html>
+<html>
+<head>
+<title>Details</title>
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+	crossorigin="anonymous">
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+	integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+	crossorigin="anonymous"></script>
+<style>
+body {
+	margin: 10px;
+	border: 2px solid gold;
+	background: black;
+	padding: 10px;
+}
+
+.three {
+	height: 50px;
+	display: flex;
+	background: grey;
+	color: black;
+	padding: 10px;
+}
+
+.four {
+	background: grey;
+	height: 40px;
+	position: relative;
+	top: 73%;
+}
+
+.one {
+	color: whitesmoke;
+	border: 2px solid gold;
+	margin: 20px;
+	position: relative;
+	left: 25%;
+}
+
+th {
+	padding: 10px;
+	border: 2px solid gold;
+}
+
+a {
+	text-decoration: none;
+	color: black;
+}
+</style>
+</head>
+<body>
+	<%HttpSession sess=request.getSession(false);
+Customer c=(Customer)sess.getAttribute("success");
+
+%>
+	<div class="three">
+		<div class="col-3">
+			<h3>
+				Welcome <span style="color: gold"><%=c.getName() %></span>
+			</h3>
+		</div>
+		<div class="col-3"></div>
+		<div class="col-3"></div>
+		<div class="col-3">
+			<button class="btn bg-warning">
+				<a href="Login.jsp">Back</a>
+			</button>
+		</div>
+	</div>
+	<table border=2 class="one">
+		<tr>
+			<th><center>ACC_NO</center></th>
+			<th><center>NAME</center></th>
+			<th><center>PHONE</center></th>
+			<th><center>Mail</center>
+				</center></th>
+			<th><center>BALANCE</center></th>
+			<th><center>PIN</center></th>
+		</tr>
+		<tr>
+			<th><center><%=c.getAccno() %></center></th>
+			<th><center><%=c.getName() %></center></th>
+			<th><center><%=c.getPhone() %></center></th>
+			<th><center><%=c.getMail() %></center></th>
+			<th><center><%=c.getBal() %></center></th>
+			<th><center><%=c.getPin() %></center></th>
+		<tr>
+	</table>
+	<div style="display: flex; position: relative; left: 45%">
+		<center>
+			<button class="btn bg-warning" style="margin: 10px;">
+				<a href="Update.jsp">Update</a>
+			</button>
+		</center>
+		<center>
+			<button class="btn bg-warning" style="margin: 10px;">
+				<a href="Dashboard.jsp">Back</a>
+			</button>
+		</center>
+	</div>
+	<div class="four">
+		<center>
+			<h3>&copy Copy @2025</h3>
+		</center>
+	</div>
+</body>
+</html>
